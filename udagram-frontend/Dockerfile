@@ -12,6 +12,7 @@ COPY . .
 FROM node:16
 # Set legacy OpenSSL provider
 ENV NODE_OPTIONS=--openssl-legacy-provider
+RUN npm install -g @ionic/cli
 RUN ionic build --prod
 ### Run 
 FROM nginx:alpine
