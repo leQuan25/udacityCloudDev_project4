@@ -1,3 +1,4 @@
+FROM node:16
 ### Build
 FROM beevelop/ionic:latest AS ionic
 ## Create app directory
@@ -9,10 +10,9 @@ RUN npm ci --force
 ## Bundle app source
 COPY . .
 # Use Node.js 16 as base image
-FROM node:16
 # Set legacy OpenSSL provider
 ENV NODE_OPTIONS=--openssl-legacy-provider
-RUN npm install -g @ionic/cli
+travis_retry RUN npm install -g @ionic/cli
 RUN ionic build --prod
 ### Run 
 FROM nginx:alpine
