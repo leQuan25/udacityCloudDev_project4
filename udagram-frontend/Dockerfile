@@ -12,7 +12,7 @@ COPY . .
 # Use Node.js 16 as base image
 # Set legacy OpenSSL provider
 ENV NODE_OPTIONS=--openssl-legacy-provider
-travis_retry RUN npm install -g @ionic/cli
+RUN npm install -g @ionic/cli
 RUN ionic build --prod
 ### Run 
 FROM nginx:alpine

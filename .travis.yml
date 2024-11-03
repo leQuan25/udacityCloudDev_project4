@@ -1,9 +1,12 @@
 services:
   - docker
 
+node_js:
+  - "16"
+
 # Pre-testing installs
 install:
-  - echo "nothing needs to be installed"
+  - travis_retry npm install -g @ionic/cli
 
 # Scripts to be run such as tests
 before_script:
